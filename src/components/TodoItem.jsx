@@ -31,7 +31,6 @@ const TodoItem = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-          >
           />
         </svg>
       </button>
