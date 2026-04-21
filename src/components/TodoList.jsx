@@ -1,49 +1,31 @@
 import TodoItem from "./TodoItem"
 
-const TodoList = () => {
-  const hasTasks = true
+// Отвечает за список задач
+
+const TodoList = (props) => {
+  const {
+    tasks = [], // если значение пропса окажется undefined вставим пустой массив
+  } = props
+
+  const hasTasks = tasks.length > 0
 
   if (!hasTasks) {
-    return <div className="todo__empty-message"></div>
+    return <div className="todo__empty-message">No tasks yet</div>
   }
 
   return (
     <ul className="todo__list">
-      <TodoItem />
-      <li className="todo__item todo-item">
-        <input
-          className="todo-item__checkbox"
-          id="task-2"
-          type="checkbox"
+      {tasks.map((task) => ( // можно сразу сделать деструктуризацию {id, title, isDone} вместо task
+        <TodoItem
+          key={task.id}
+          className="todo__item"
+          id={task.id}
+          title={task.title}
+          isDone={task.isDone}
+          // или ...task - развернуть весь task с помощью rest параметра
+          // вместо того чтобы выбирать всё по отдельности
         />
-        <label
-          className="todo-item__label"
-          htmlFor="task-2"
-        >
-          Task 2
-        </label>
-        <button
-          className="todo-item__delete-button"
-          aria-label="Delete"
-          title="Delete"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15 5L5 15M5 5L15 15"
-              stroke="#757575"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </li>
+      ))}
     </ul>
   )
 }

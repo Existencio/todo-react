@@ -1,11 +1,17 @@
 import Button from "./Button"
 import Field from "./Field"
 
+// Отвечает за форму добавления новой задачи
+
 const AddTaskForm = () => {
   return (
     <form className="todo__form">
-      <Field />
-      <Button />
+      <Field
+        className="todo__field"
+        label="New task title"
+        id="new-task"
+      />
+      <Button type="submit">Add</Button>
     </form>
   )
 }
