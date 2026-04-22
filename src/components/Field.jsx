@@ -1,4 +1,4 @@
-// Переиспользуемый компонент для поля ввода
+// * Переиспользуемый компонент для поля ввода
 
 const Field = (props) => {
   const {
@@ -6,6 +6,7 @@ const Field = (props) => {
     id,
     label,
     type = 'text',
+    onInput,
   } = props
 
   return (
@@ -22,6 +23,7 @@ const Field = (props) => {
         placeholder=" "
         autoComplete="off"
         type={type}
+        onInput={onInput}
       />
     </div>
   )
